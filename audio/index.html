@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ηχητικός οδηγός — Μουσείο Ρητίνης Λέσβου</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .list{display:grid;gap:10px;margin-top:10px}
+  .item{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
+  .item img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px var(--resin)}
+  .num{font-size:.8rem;color:var(--muted)}
+  .item strong{display:block;font-family:var(--serif)}
+  .item em{color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="topbar"><span class="museum-name">Μουσείο Ρητίνης Λέσβου · Lesvos Resin Museum</span>
+  <a class="pill" style="color:#f3ead7;text-decoration:none" href="qr.html">QR codes</a></header>
+<main class="content">
+  <h1 class="stop-title">Ηχητικός οδηγός · Audio guide</h1>
+  <div class="list" id="list"></div>
+</main>
+<script src="data.js"></script>
+<script>
+  var box = document.getElementById("list");
+  Object.keys(STOPS).forEach(function (id) {
+    var s = STOPS[id];
+    var a = document.createElement("a");
+    a.className = "card item"; a.href = "player.html?id=" + encodeURIComponent(id);
+    var img = document.createElement("img"); img.alt = ""; img.src = s.photo || SETTINGS.defaultPhoto;
+    var d = document.createElement("div");
+    d.innerHTML = '<span class="num"></span><strong></strong><em></em>';
+    d.querySelector(".num").textContent = id;
+    d.querySelector("strong").textContent = s.el.title;
+    d.querySelector("em").textContent = s.en ? s.en.title : "";
+    a.appendChild(img); a.appendChild(d); box.appendChild(a);
+  });
+</script>
+</body>
+</html>
