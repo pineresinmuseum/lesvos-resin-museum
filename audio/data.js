@@ -272,7 +272,7 @@ const STOPS = {
   },
 
   "9": {   // διάρκεια ~33 δευτ.
-    photo: "img/αλμπουμ φωτογραφιων δρομενων/Επίσκεψη στον Παλίο οικισμό των ρετσινάδων.jpg",      // κενό = defaultPhoto
+    photo: "img/oikismos.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Ο παλαιός οικισμός των ρετσινάδων",
@@ -301,7 +301,7 @@ const STOPS = {
   },
 
   "10": {   // διάρκεια ~31 δευτ.
-    photo: "/img/το Αμπελικο χιονισμένο.jpg",      // κενό = defaultPhoto
+    photo: "/img/xionia.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Αναμνήσεις",
