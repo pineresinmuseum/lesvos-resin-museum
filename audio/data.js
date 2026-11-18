@@ -301,7 +301,7 @@ const STOPS = {
   },
 
   "10": {   // διάρκεια ~31 δευτ.
-    photo: "/img/xionia.jpg",      // κενό = defaultPhoto
+    photo: "img/xionia.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Αναμνήσεις",
