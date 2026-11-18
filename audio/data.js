@@ -28,7 +28,7 @@ const SETTINGS = {
 const STOPS = {
 
   "1": {
-    photo: "~audio/img/Canva - download.jpg",
+    photo: "audio/img/Canva - download.jpg",
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Η σκληρή ζωή των ρετσινάδων",
@@ -63,7 +63,7 @@ const STOPS = {
   },
 
   "2": {   // διάρκεια ~72 δευτ.
-    photo: "~audio/img/1795025083512.JPG",      // κενό = defaultPhoto
+    photo: "audio/img/1795025083512.JPG",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Το φαγητό και η ελάχιστη ξεκούραση",
@@ -96,7 +96,7 @@ const STOPS = {
   },
 
   "3": {   // διάρκεια ~29 δευτ.
-    photo: "~audio/img/1795025398132.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/1795025398132.jpg",      // κενό = defaultPhoto
     speaker:  { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Από τις παρυφές στην κορυφή",
@@ -121,7 +121,7 @@ const STOPS = {
   },
 
   "4": {   // διάρκεια ~15 δευτ.
-    photo: "~audio/img/1795025667744.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/1795025667744.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Οι καλύβες",
@@ -146,7 +146,7 @@ const STOPS = {
   },
 
   "5": {   // διάρκεια ~52 δευτ.
-    photo: "~audio/img/πευκοδασος.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/πευκοδασος.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Τα μέρη που εργάζονταν οι ρετσινάδες",
@@ -176,7 +176,7 @@ const STOPS = {
   },
 
   "6": {   // διάρκεια ~44 δευτ.
-    photo: "~audio/img/koybadaki.jpg.png",      // κενό = defaultPhoto
+    photo: "audio/img/koybadaki.jpg.png",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
 
@@ -212,7 +212,7 @@ const STOPS = {
   },
 
   "7": {   // διάρκεια ~24 δευτ.
-    photo: "~audio/img/1795025083556.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/1795025083556.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Διάρκεια ρητινοσυλλογής",
@@ -243,7 +243,7 @@ const STOPS = {
   },
 
   "8": {   // διάρκεια ~28 δευτ.
-    photo: "~audio/img/1795025083528.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/1795025083528.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Η απόλυτη εμπιστοσύνη",
@@ -272,7 +272,7 @@ const STOPS = {
   },
 
   "9": {   // διάρκεια ~33 δευτ.
-    photo: "~audio/img/αλμπουμ φωτογραφιων δρομενων/Επίσκεψη στον Παλίο οικισμό των ρετσινάδων.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/αλμπουμ φωτογραφιων δρομενων/Επίσκεψη στον Παλίο οικισμό των ρετσινάδων.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Ο παλαιός οικισμός των ρετσινάδων",
@@ -328,7 +328,7 @@ const STOPS = {
   },
 
   "11": {   // διάρκεια ~8 δευτ.
-    photo: "~audio/img/Ανώνυμο σχέδιο (2).png",      // κενό = defaultPhoto
+    photo: "audio/img/Ανώνυμο σχέδιο (2).png",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Ο Ρετσινάς Παναγιώτης Σίμος",
@@ -359,7 +359,7 @@ const STOPS = {
   },
 
   "12": {   // διάρκεια ~19 δευτ.
-    photo: "~audio/img/images.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/images.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Παραγωγή Μαστίχας",
@@ -384,7 +384,7 @@ const STOPS = {
   },
 
   "13": {   // διάρκεια ~48 δευτ.
-    photo: "~audio/img/8c404085ad0e18ac4051528f2fb44122.jpg",      // κενό = defaultPhoto
+    photo: "audio/img/8c404085ad0e18ac4051528f2fb44122.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Τα παράγωγα και οι χρήσεις της ρητίνης",
