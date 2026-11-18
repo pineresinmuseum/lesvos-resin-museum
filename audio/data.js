@@ -301,7 +301,7 @@ const STOPS = {
   },
 
   "10": {   // διάρκεια ~31 δευτ.
-    photo: "C:/Users/user/Downloads/αλμπουμ φωτογραφιων δρομενων/το Αμπελικο χιονισμένο.jpg",      // κενό = defaultPhoto
+    photo: "~/img/το Αμπελικο χιονισμένο.jpg",      // κενό = defaultPhoto
     speaker: { el: "Ο ρετσινάς Π. Σίμος", en: "The resiner P. Simos" },
     el: {
       title: "Αναμνήσεις",
