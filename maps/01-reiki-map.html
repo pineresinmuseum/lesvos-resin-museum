@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="el">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Map</title>
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+<script crossorigin="" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+html,body{height:100%;margin:0}
+#map{height:100%;background:#f0f0f0}
+#footer{height:140px;box-sizing:border-box;border-top:1px solid #ddd;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:12px;padding:10px 12px;overflow:auto;background:#fff}
+#footer h1{font-size:14px;margin:0 0 6px 0}.row{display:flex;gap:18px;flex-wrap:wrap}.col{min-width:220px}
+.legend-item{display:flex;align-items:center;gap:8px;margin:4px 0}
+.swatch-point{width:12px;height:12px;border-radius:50%;border:2px solid currentColor;box-sizing:border-box}
+.swatch-line{width:18px;height:0;border-top:3px solid currentColor}
+.swatch-poly{width:14px;height:12px;border:2px solid currentColor;background:rgba(0,0,0,.08)}
+.label{background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.3);border-radius:3px;padding:1px 4px;white-space:nowrap;font-size:12px}
+.label-num{background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.45);border-radius:10px;padding:0 6px;line-height:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:12px}
+</style></head><body>
+<div id="map"></div>
+<div id="footer" style="display:none">
+<h1>Erica manipuliflora Salisb.</h1>
+<div class="row">
+<div class="col"><div><b>Exported:</b> 2026-11-19 10:31</div><div><b>CRS:</b> EPSG:3857</div></div>
+<div class="col"><div><b>Legend:</b></div><div id="legend"></div></div>
+<div class="col" style="flex:1"><div><b>Footnotes:</b></div>
+<div style="margin-top:4px">
+Data: GBIF.org (19 November 2026) GBIF Occurrence Download https://doi.org/10.15468/dl.xxxxxx<br/>
+Basemap: Esri, Maxar, Earthstar Geographics<br/>
+Map: Lesvos Resin Museum, Vasiliki Kakampoura
+</div>
+<div id="footnotes" style="margin-top:4px"></div>
+</div></div>
+<script>
+(function(){function T(){this.items=[]}T.prototype.insert=function(x){this.items.push(x)};T.prototype.search=function(b){return this.items.filter(function(i){return !(i.maxX<b.minX||i.minX>b.maxX||i.maxY<b.minY||i.minY>b.maxY)})};T.prototype.remove=function(v,fn){for(var i=0;i<this.items.length;i++){if(fn?fn(v,this.items[i]):this.items[i]===v){this.items.splice(i,1);return}}};self.RBush=T})();
+(function(){function E(){this.tree=new RBush();this.labels={}}E.prototype.addLabel=function(el,box,id){this.labels[id]={el:el,box:{minX:box.minX,minY:box.minY,maxX:box.maxX,maxY:box.maxY,id:id}};this.tree.insert(this.labels[id].box)};E.prototype._hide=function(id){var x=this.labels[id];if(x)x.el.style.display='none'};E.prototype._show=function(id){var x=this.labels[id];if(x)x.el.style.display=''};E.prototype.reset=function(){for(var k in this.labels)this._show(k)};E.prototype.render=function(ids){this.reset();for(var i=0;i<ids.length;i++){var id=ids[i],o=this.labels[id];if(!o)continue;this.tree.remove(o.box,function(a,b){return a.id===b.id});var hit=this.tree.search(o.box).some(function(h){return h.id!==id});this.tree.insert(o.box);if(hit)this._hide(id);else this._show(id)}};self.Labelgun=E})();
+const LAYERS = [{"name":"Erica manipuliflora","id":"Extracted_021af422_76b9_4ecb_ba2c_72eb41d0d223","type":"vector","style":{"type":"point","color":"#e8718d","radius":7,"opacity":1.0,"fillColor":"#e8718d","fillOpacity":0.8},"labels":false,"geojson":{"type":"FeatureCollection","features":[{"geometry":{"coordinates":[26.305882561014787,39.11566388705345],"type":"Point"},"id":1,"properties":{"_labelPoint":[26.305882561014787,39.11566388705345]},"type":"Feature"},{"geometry":{"coordinates":[26.30723346906678,39.11649135670508],"type":"Point"},"id":2,"properties":{"_labelPoint":[26.30723346906678,39.11649135670508]},"type":"Feature"},{"geometry":{"coordinates":[26.417383,39.32657],"type":"Point"},"id":3,"properties":{"_labelPoint":[26.417383,39.32657]},"type":"Feature"},{"geometry":{"coordinates":[26.541357,39.016698],"type":"Point"},"id":4,"properties":{"_labelPoint":[26.541357,39.016698]},"type":"Feature"},{"geometry":{"coordinates":[26.222622,39.26692],"type":"Point"},"id":5,"properties":{"_labelPoint":[26.222622,39.26692]},"type":"Feature"},{"geometry":{"coordinates":[26.407132,39.312346],"type":"Point"},"id":6,"properties":{"_labelPoint":[26.407132,39.312346]},"type":"Feature"},{"geometry":{"coordinates":[26.542346,39.014847],"type":"Point"},"id":7,"properties":{"_labelPoint":[26.542346,39.014847]},"type":"Feature"},{"geometry":{"coordinates":[26.386278,39.30117],"type":"Point"},"id":8,"properties":{"_labelPoint":[26.386278,39.30117]},"type":"Feature"},{"geometry":{"coordinates":[26.386365,39.300981],"type":"Point"},"id":9,"properties":{"_labelPoint":[26.386365,39.300981]},"type":"Feature"},{"geometry":{"coordinates":[26.416826,39.324628],"type":"Point"},"id":10,"properties":{"_labelPoint":[26.416826,39.324628]},"type":"Feature"},{"geometry":{"coordinates":[26.425382,39.24709],"type":"Point"},"id":11,"properties":{"_labelPoint":[26.425382,39.24709]},"type":"Feature"}]}},{"name":"ESRI World Imagery","id":"_2062433d_0fa0_4c2f_9d47_0946aa62ecf7","type":"tile","url":"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}","minZoom":0,"maxZoom":22}];
+const LEGEND = [{"name": "Erica manipuliflora", "type": "point", "color": "#e8718d"}, {"name": "ESRI World Imagery", "type": "tile", "color": "#666666"}];
+const FIT_BOUNDS = null;
+const map = L.map('map', {scrollWheelZoom:false, zoomControl:true, attributionControl:false});
+if (map.attributionControl) { try { map.attributionControl.remove(); } catch(e) {} }
+const layerControl = L.control.layers({}, null, {collapsed:false}).addTo(map);
+
+(function(){
+  const el=document.getElementById('legend');
+  LEGEND.forEach(function(item){
+    const row=document.createElement('div'); row.className='legend-item';
+    const sw=document.createElement('span'); sw.style.color=item.color||'#3388ff';
+    if(item.type==='point') sw.className='swatch-point';
+    else if(item.type==='line') sw.className='swatch-line';
+    else if(item.type==='raster' || item.type==='tile') { sw.className='swatch-poly'; sw.style.background='linear-gradient(45deg,#999,#ddd)'; sw.style.opacity='1'; }
+    else { sw.className='swatch-poly'; sw.style.background=item.fill||item.color||'#3388ff'; sw.style.opacity='0.25';}
+    const name=document.createElement('span'); name.textContent=item.name;
+    row.appendChild(sw); row.appendChild(name); el.appendChild(row);
+  });
+})();
+
+function styleFrom(st){
+  if(st.type==='line') return {color:st.color,weight:st.weight||3,opacity:(st.opacity ?? 0.9)};
+  if(st.type==='polygon') return {color:st.color,weight:st.weight||2,opacity:(st.opacity ?? 0.9),fillColor:st.fillColor||st.color,fillOpacity:(st.fillOpacity ?? 0.25)};
+  return null;
+}
+function pointToLayerFrom(st, feature, latlng){
+  return L.circleMarker(latlng,{radius:st.radius||7,color:st.color||'#cc3333',weight:2,opacity:(st.opacity ?? 1),fillColor:st.fillColor||st.color||'#cc3333',fillOpacity:(st.fillOpacity ?? 0.8)});
+}
+function mercatorToWgs84(x,y){
+  const lon = (x / 20037508.34) * 180.0;
+  let lat = (y / 20037508.34) * 180.0;
+  lat = 180 / Math.PI * (2 * Math.atan(Math.exp(lat * Math.PI / 180.0)) - Math.PI / 2);
+  return [lon, lat];
+}
+function normalizeCoords(coords){
+  if(!Array.isArray(coords)) return coords;
+  if(typeof coords[0] === 'number' && typeof coords[1] === 'number'){
+    const x = coords[0], y = coords[1];
+    if(Math.abs(x) > 180 || Math.abs(y) > 90){
+      return mercatorToWgs84(x, y);
+    }
+    return coords;
+  }
+  return coords.map(normalizeCoords);
+}
+function normalizeGeoJSON(gj){
+  if(!gj || !gj.features) return gj;
+  gj.features.forEach(function(f){
+    if(f.geometry && f.geometry.coordinates){
+      f.geometry.coordinates = normalizeCoords(f.geometry.coordinates);
+    }
+    if(f.properties && f.properties._labelPoint){
+      const p = f.properties._labelPoint;
+      if(Array.isArray(p) && p.length >= 2 && (Math.abs(p[0]) > 180 || Math.abs(p[1]) > 90)){
+        f.properties._labelPoint = mercatorToWgs84(p[0], p[1]);
+      }
+    }
+  });
+  return gj;
+}
+function manualBoundsFromGeoJSON(gj){
+  let minLat=90,minLng=180,maxLat=-90,maxLng=-180;
+  function visit(c){
+    if(!c) return;
+    if(typeof c[0]==='number' && typeof c[1]==='number'){
+      const lng=c[0], lat=c[1];
+      if(lat<minLat) minLat=lat; if(lng<minLng) minLng=lng; if(lat>maxLat) maxLat=lat; if(lng>maxLng) maxLng=lng;
+    } else if(Array.isArray(c)) c.forEach(visit);
+  }
+  try { (gj.features||[]).forEach(function(f){ visit(f.geometry && f.geometry.coordinates); }); } catch(e) {}
+  if(minLat<=maxLat && minLng<=maxLng) return L.latLngBounds([minLat,minLng],[maxLat,maxLng]);
+  return null;
+}
+
+const footnotes = [];
+function renderFootnotes(){
+  const el=document.getElementById('footnotes'); el.innerHTML='';
+  if(!footnotes.length){ el.textContent='—'; return; }
+  const byLayer={};
+  footnotes.forEach(function(fn){ if(!byLayer[fn.layer]) byLayer[fn.layer]=[]; byLayer[fn.layer].push(fn); });
+  Object.keys(byLayer).forEach(function(layerName){
+    const h=document.createElement('div'); h.style.marginTop='6px'; h.innerHTML='<b>'+layerName+'</b>'; el.appendChild(h);
+    byLayer[layerName].forEach(function(fn){ const d=document.createElement('div'); d.textContent=fn.n+': '+fn.text; el.appendChild(d); });
+  });
+}
+function createLabelMarker(latlng, html, className, offsetY){
+  const icon=L.divIcon({className:'', html:'<span class="'+className+'">'+html+'</span>', iconAnchor:[0, offsetY||0]});
+  return L.marker(latlng,{icon:icon, interactive:false});
+}
+function buildLabelsForLayer(layerDef, group){
+  const records=[]; let counter=1;
+  (layerDef.geojson.features||[]).forEach(function(f){
+    if(!f.properties || !f.properties._label || !f.properties._labelPoint) return;
+    const latlng=[f.properties._labelPoint[1], f.properties._labelPoint[0]];
+    const text=String(f.properties._label);
+    const top=createLabelMarker(latlng,text,'label',26);
+    const bot=createLabelMarker(latlng,text,'label',-8);
+    top.addTo(group); bot.addTo(group);
+    const num=createLabelMarker(latlng,counter,'label-num',8); num.addTo(group);
+    if(num.getElement()) num.getElement().style.display='none';
+    records.push({n:counter,text:text,layer:layerDef.name,top:top,bot:bot,num:num,idTop:layerDef.id+'_'+counter+'_t',idBot:layerDef.id+'_'+counter+'_b'});
+    counter += 1;
+  });
+  function compute(){
+    for(let i=footnotes.length-1;i>=0;i--) if(footnotes[i].layer===layerDef.name) footnotes.splice(i,1);
+    const engine=new Labelgun(), ordered=[];
+    function add(m,id,p){
+      const el=m.getElement(); if(!el) return;
+      const r=el.getBoundingClientRect();
+      engine.addLabel(el,{minX:r.left,minY:r.top,maxX:r.right,maxY:r.bottom},id); ordered.push({id:id,p:p});
+    }
+    records.forEach(function(rec){
+      if(rec.top.getElement()) rec.top.getElement().style.display='';
+      if(rec.bot.getElement()) rec.bot.getElement().style.display='';
+      if(rec.num.getElement()) rec.num.getElement().style.display='none';
+      add(rec.top, rec.idTop, 2); add(rec.bot, rec.idBot, 1);
+    });
+    ordered.sort(function(a,b){ return b.p-a.p; });
+    engine.render(ordered.map(function(x){ return x.id; }));
+    records.forEach(function(rec){
+      const th=rec.top.getElement() && rec.top.getElement().style.display==='none';
+      const bh=rec.bot.getElement() && rec.bot.getElement().style.display==='none';
+      if(th && bh){
+        if(rec.num.getElement()) rec.num.getElement().style.display='';
+        footnotes.push({layer:rec.layer,n:rec.n,text:rec.text});
+      }
+    });
+    renderFootnotes();
+  }
+  map.whenReady(function(){ compute(); map.on('zoomend moveend', compute); });
+}
+
+let allBounds=null;
+LAYERS.forEach(function(layerDef){
+  if(layerDef.type==='tile'){
+    try{
+      const tl = L.tileLayer(layerDef.url, {minZoom: layerDef.minZoom || 0, maxZoom: layerDef.maxZoom || 22});
+      tl.addTo(map);
+      layerControl.addOverlay(tl, layerDef.name);
+    }catch(e){}
+    return;
+  }
+  if(layerDef.type==='raster'){
+    if(layerDef.bounds && layerDef.image){
+      const overlay = L.imageOverlay('data:image/png;base64,' + layerDef.image, layerDef.bounds, {opacity:1});
+      overlay.addTo(map);
+      layerControl.addOverlay(overlay, layerDef.name);
+      try {
+        const b = L.latLngBounds(layerDef.bounds);
+        allBounds = allBounds ? allBounds.extend(b) : b;
+      } catch(e) {}
+    }
+    return;
+  }
+
+  const st=layerDef.style||{};
+  layerDef.geojson = normalizeGeoJSON(layerDef.geojson);
+  const g=L.geoJSON(layerDef.geojson,{
+    style:function(){ return styleFrom(st); },
+    pointToLayer:function(feature, latlng){ return pointToLayerFrom(st, feature, latlng); }
+  });
+  g.addTo(map);
+  layerControl.addOverlay(g, layerDef.name);
+  try {
+    const b=g.getBounds();
+    if(b && b.isValid && b.isValid()) allBounds=allBounds ? allBounds.extend(b) : b;
+    else {
+      const mb=manualBoundsFromGeoJSON(layerDef.geojson);
+      if(mb) allBounds=allBounds ? allBounds.extend(mb) : mb;
+    }
+  } catch(e) {
+    const mb=manualBoundsFromGeoJSON(layerDef.geojson);
+    if(mb) allBounds=allBounds ? allBounds.extend(mb) : mb;
+  }
+  if(layerDef.labels){
+    const lg=L.layerGroup().addTo(map);
+    layerControl.addOverlay(lg, layerDef.name+' (labels)');
+    buildLabelsForLayer(layerDef, lg);
+  }
+});
+
+if(allBounds) map.fitBounds(allBounds, {padding:[20,20], maxZoom:15});
+else if(FIT_BOUNDS) map.fitBounds(FIT_BOUNDS, {padding:[20,20]});
+else map.setView([0,0], 2);
+L.control.scale().addTo(map);
+</script></div></body></html>

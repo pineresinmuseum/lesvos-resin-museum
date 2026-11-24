@@ -1,0 +1,27 @@
+/* Άρθρα σε μορφή "τεύχους" (static_posts.py) */
+.sp-issue{display:flex;flex-direction:column;align-items:center;gap:28px;margin:8px 0 8px}
+.sp-page{width:100%;max-width:794px;box-shadow:0 4px 18px rgba(0,0,0,.12);background:#fff}
+.sp-page>div{width:100%!important;height:auto!important;min-height:0!important;box-sizing:border-box}
+.sp-page img{max-width:100%}
+.sp-page svg{flex:0 0 auto}
+.sp-page h1,.sp-page h2{line-height:1.15}
+.sp-page p,.sp-page h1,.sp-page h2{overflow-wrap:break-word}
+.sp-map{width:100%;max-width:794px;align-self:center}
+.sp-map h2{font-size:1.5rem;margin:0 0 .25rem}
+.sp-map .sp-map-species{margin:0 0 .75rem;color:#4A5850}
+.sp-map iframe{display:block;width:100%;height:520px;border:0;border-radius:6px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.sp-map .sp-map-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:.75rem 0 .25rem;font-size:.9rem}
+.sp-map .sp-map-legend span.sw{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid currentColor;margin-right:6px;vertical-align:-1px}
+.sp-map .sp-map-legend span.sw.tile{border-radius:2px;background:linear-gradient(45deg,#999,#ddd)}
+.sp-map .sp-map-credits{font-size:.8rem;color:#4A5850;line-height:1.5}
+@media (max-width:767.98px){
+  .sp-issue{gap:18px}
+  .sp-page [style*="grid-template-columns"]:not([style*="auto"]){grid-template-columns:1fr!important}
+  .sp-page [style*="padding"]{padding-left:18px!important;padding-right:18px!important}
+  .sp-page header{flex-wrap:wrap;gap:8px}
+  .sp-page h1{font-size:clamp(34px,11vw,60px)!important}
+  .sp-page img[style*="height"]{height:auto!important;aspect-ratio:4/3}
+  .sp-page [style*="height: 470px"],.sp-page [style*="height:470px"]{height:auto!important}
+  .sp-map iframe{height:400px}
+}
+@media print{.sp-page{box-shadow:none}.sp-map iframe{display:none}}
