@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3f4a2c">
+<title>Μουσείο Ρητίνης Λέσβου — Ηχητικός οδηγός</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 1. Επιλογή γλώσσας -->
+<section id="chooser" class="screen" hidden>
+  <div class="chooser-card">
+    <p class="eyebrow" id="ch-museum">Μουσείο Ρητίνης Λέσβου · Lesvos Resin Museum</p>
+    <img id="ch-photo" class="ch-photo" alt="">
+    <h1 id="ch-title-el" class="ch-title"></h1>
+    <p id="ch-title-en" class="ch-sub"></p>
+    <p class="ch-prompt">Επιλέξτε γλώσσα · Choose language</p>
+    <div class="lang-buttons">
+      <button class="lang-btn" data-lang="el"><span class="lang-code">ΕΛ</span>Ελληνικά</button>
+      <button class="lang-btn" data-lang="en"><span class="lang-code">EN</span>English</button>
+    </div>
+    <label class="switch" id="autoplay-wrap">
+      <input type="checkbox" id="autoplay-toggle">
+      <span class="switch-track" aria-hidden="true"></span>
+      <span>Αυτόματη έναρξη · Autoplay</span>
+    </label>
+  </div>
+</section>
+
+<!-- 2. Player -->
+<section id="player" class="screen" hidden>
+  <header class="topbar">
+    <span id="museum-name" class="museum-name"></span>
+    <button id="switch-lang" class="pill"></button>
+  </header>
+
+  <main class="content">
+    <h1 id="stop-title" class="stop-title"></h1>
+
+    <div class="layout">
+      <div class="card player-card">
+        <div class="speaker">
+          <div class="avatar-wrap" id="avatar-wrap">
+            <img id="speaker-photo" class="avatar" alt="">
+          </div>
+          <p id="speaker-name" class="speaker-name"></p>
+        </div>
+
+        <div class="bars" id="bars" aria-hidden="true"></div>
+
+        <p id="caption" class="caption" aria-live="polite" hidden></p>
+
+        <div class="controls">
+          <button id="back10" class="ctrl" aria-label="-10s">
+            <svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/><text x="12" y="16.5" text-anchor="middle" font-size="6.5" font-weight="700">10</text></svg>
+          </button>
+          <button id="play" class="ctrl play" aria-label="Play">
+            <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+          </button>
+          <button id="fwd10" class="ctrl" aria-label="+10s">
+            <svg viewBox="0 0 24 24"><path d="M12 5V2l5 4-5 4V7a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8z"/><text x="12" y="16.5" text-anchor="middle" font-size="6.5" font-weight="700">10</text></svg>
+          </button>
+        </div>
+
+        <div class="progress-row">
+          <span id="cur" class="time">0:00</span>
+          <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
+          <span id="dur" class="time">0:00</span>
+        </div>
+
+        <div class="toggles">
+          <button id="cc-btn" class="pill" aria-pressed="false"></button>
+          <button id="tr-btn" class="pill" aria-expanded="false" aria-controls="transcript"></button>
+        </div>
+
+        <audio id="audio" preload="metadata"></audio>
+      </div>
+
+      <aside class="card dyk-card">
+        <h2 id="dyk-title" class="dyk-title"></h2>
+        <ul id="dyk-list" class="dyk-list"></ul>
+      </aside>
+    </div>
+
+    <section id="transcript" class="card transcript" hidden>
+      <h2 id="tr-title"></h2>
+      <p id="tr-note" class="tr-note" hidden></p>
+      <div id="tr-lines" class="tr-lines"></div>
+    </section>
+  </main>
+
+  <footer class="foot"><a id="site-link" href="#"></a></footer>
+</section>
+
+<!-- Σφάλμα -->
+<section id="error" class="screen" hidden>
+  <div class="chooser-card">
+    <h1>Δεν βρέθηκε το ηχητικό</h1>
+    <p>Recording not found.</p>
+    <p><a href="index.html">Όλα τα ηχητικά · All recordings</a></p>
+  </div>
+</section>
+
+<script src="data.js"></script>
+<script src="js/player.js"></script>
+</body>
+</html>
